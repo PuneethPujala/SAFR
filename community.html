@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFR - Community</title>
+    <link rel="stylesheet" href="web1_css.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="safr-logo-home">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgk8Frl_plCgKfoa9cEq2bO-e1a3CZGjvnZCOW05c0vKh2xFqX0SMsD2AOpNDSLUIh1rUdyCQa2BcyTHP1s9M_LaTilTsDJQn2PjtQ5x59KoZU1zqu6A728WmZrxmzZB1c7Y69gRfOpu2bR7wY4ukUb9EWB9bgoeKMneAJdN8I3wZh5vAlmWzZj8RyOE5E/s500/3ac03fa8-9833-459d-bf18-1d3b8ace7c62.jpeg" alt="Logo" class="logo-image">
+                <span>SAFR</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-icon" onclick="toggleDropdown()">
+                <img src="https://th.bing.com/th/id/OIP.mObA_NLT0dV0wS0tUgxz-wHaHa?pid=ImgDet&w=199&h=199&c=7&dpr=1.1" alt="User Icon" class="user-img">
+            </div>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="user.html">Profile</a>
+                <a href="login.html">Login</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="community">
+        <h1>Community</h1>
+        <p>Interact with users worldwide, share experiences, and ask for help!</p>
+        
+        <div class="message-board">
+            <h2>Community Messages</h2>
+            <div id="messages">
+                <!-- Example messages -->
+                <p>Anushka: Hello, does anyone have tips for using SAFR effectively?</p>
+                <p>Samantha: Stay safe everyone! Remember to check in regularly.</p>
+            </div>
+            
+            <div class="message-input">
+                <input type="text" id="newMessage" placeholder="Type your message here..." maxlength="250">
+                <button onclick="addMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SAFR. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addMessage() {
+            const newMessage = document.getElementById('newMessage').value;
+            if (newMessage.trim() !== "") {
+                const messagesDiv = document.getElementById('messages');
+                const messageElement = document.createElement('p');
+                messageElement.textContent = `You: ${newMessage}`;
+                messagesDiv.appendChild(messageElement);
+                document.getElementById('newMessage').value = "";
+            }
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.getElementById("userDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>

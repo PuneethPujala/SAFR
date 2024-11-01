@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link rel="stylesheet" href="web1_css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="safr-logo-home">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgk8Frl_plCgKfoa9cEq2bO-e1a3CZGjvnZCOW05c0vKh2xFqX0SMsD2AOpNDSLUIh1rUdyCQa2BcyTHP1s9M_LaTilTsDJQn2PjtQ5x59KoZU1zqu6A728WmZrxmzZB1c7Y69gRfOpu2bR7wY4ukUb9EWB9bgoeKMneAJdN8I3wZh5vAlmWzZj8RyOE5E/s500/3ac03fa8-9833-459d-bf18-1d3b8ace7c62.jpeg" alt="Logo" class="logo-image">
+                <span>SAFR</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-icon" onclick="toggleDropdown()">
+                <img src="https://th.bing.com/th/id/OIP.mObA_NLT0dV0wS0tUgxz-wHaHa?pid=ImgDet&w=199&h=199&c=7&dpr=1.1" alt="User Icon" class="user-img"> <!-- Add an icon image for the user -->
+            </div>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="user.html">Profile</a>
+                <a href="login.html">Login</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="user-info">
+        <div class="profile-container">
+            <div class="photo-frame">
+                <input type="file" id="photo-upload" style="display: none;" accept="image/*">
+                <label for="photo-upload" class="photo-upload-icon" id="upload-icon">📷</label>
+                <img src="path/to/default-avatar.png" alt="User Photo" id="user-photo">
+            </div>
+
+            <!-- User Details Form -->
+            <div class="user-details">
+                <h1>User Information</h1>
+                <textarea id="bio" placeholder="Add a bio"></textarea>
+
+                <label for="pronouns">Pronouns:</label>
+                <select id="pronouns">
+                    <option value="he/him">he/him</option>
+                    <option value="she/her">she/her</option>
+                    <option value="they/them">they/them</option>
+                </select>
+
+                <label for="college">College:</label>
+                <input type="text" id="college" name="college" placeholder="VIT AP">
+
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Guntur">
+
+                <label for="timezone">Timezone:</label>
+                <select id="timezone">
+                    <option value="GMT+05:30">GMT+05:30 Kolkata</option>
+                    <option value="GMT+05:30">GMT+05:30 New Delhi</option>
+                    <option value="GMT+05:30">GMT+05:30 Mumbai</option>
+                </select>
+
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com">
+
+                <h2>Social accounts</h2>
+                <label for="instagram">Instagram:</label>
+                <input type="url" id="instagram" name="instagram" placeholder="https://instagram.com/username">
+
+                <label for="facebook">Facebook:</label>
+                <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/username">
+
+                <label for="linkedin">LinkedIn:</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
+
+                <button type="button" onclick="saveInfo()">Save</button>
+            </div>
+        </div>
+
+        <!-- Ordered Items Section -->
+        <section id="ordered-items-section">
+            <div class="container">
+                <h2 class="title">Ordered Items</h2>
+                <div id="ordered-items" class="ordered-items-grid">
+                    <!-- Ordered items can be manually added here if desired -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SAFR. All rights reserved.</p>
+    </footer>
+
+    <script src="web1_js.js"></script>
+</body>
+</html>

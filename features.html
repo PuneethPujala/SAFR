@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features</title>
+    <link rel="stylesheet" href="web1_css.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Navbar Section -->
+        <nav class="navbar">
+            <div class="safr-logo-home">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgk8Frl_plCgKfoa9cEq2bO-e1a3CZGjvnZCOW05c0vKh2xFqX0SMsD2AOpNDSLUIh1rUdyCQa2BcyTHP1s9M_LaTilTsDJQn2PjtQ5x59KoZU1zqu6A728WmZrxmzZB1c7Y69gRfOpu2bR7wY4ukUb9EWB9bgoeKMneAJdN8I3wZh5vAlmWzZj8RyOE5E/s500/3ac03fa8-9833-459d-bf18-1d3b8ace7c62.jpeg" alt="Logo" class="logo-image">
+                <span>SAFR</span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="user-icon" onclick="toggleDropdown()">
+                <img src="https://th.bing.com/th/id/OIP.mObA_NLT0dV0wS0tUgxz-wHaHa?pid=ImgDet&w=199&h=199&c=7&dpr=1.1" alt="User Icon" class="user-img"> <!-- Add an icon image for the user -->
+            </div>
+            <div class="user-dropdown" id="userDropdown">
+                <a href="user.html">Profile</a>
+                <a href="login.html">Login</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </nav>   
+    </header>
+
+    <div class="container">
+        <h1 class="title">Our Features</h1>
+
+        <!-- Location Tracking Section -->
+        <section class="location-section">
+            <h2>Location Tracking</h2>
+            <p id="location" class="location">Fetching location...</p>
+            <div id="map" style="height: 500px; width: 100%;"></div>
+        </section>
+
+
+        <section id="our-products">
+            <div class="container">
+                <h2 class="title">Our Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://th.bing.com/th/id/OIP.voQEqkW4ptlx_1NkqnYNVwHaHa?w=213&h=214&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 1">
+                        <h3>SAFR Bag 1</h3>
+                        <p>Description of Product 1.</p>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://th.bing.com/th/id/OIP.3Z3Qfa5_Hi3HWTCPHEgvvwHaHa?w=181&h=181&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="Product 2">
+                        <h3>SAFR Bag 2</h3>
+                        <p>Description of Product 2.</p>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdn.mall.adeptmind.ai/https://images.coach.com/is/image/Coach/ci355_b4bk_a0_large.webp" alt="Product 3">
+                        <h3>SAFR Bag 3</h3>
+                        <p>Description of Product 3.</p>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                    <!-- Add more product cards as needed -->
+                </div>
+            </div>
+        </section>
+        
+        <section id="camera-storage">
+            <div class="container">
+                <h2 class="title">Camera Storage</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="photo1.jpg" alt="Photo 1"></div>
+                    <div class="gallery-item"><img src="photo2.jpg" alt="Photo 2"></div>
+                    <div class="gallery-item"><img src="photo3.jpg" alt="Photo 3"></div>
+                    <div class="gallery-item"><img src="photo4.jpg" alt="Photo 4"></div>
+                    <div class="gallery-item"><img src="photo5.jpg" alt="Photo 5"></div>
+                    <div class="gallery-item"><img src="photo6.jpg" alt="Photo 6"></div>
+                    <!-- Add more photos as needed for the collage effect -->
+                </div>
+                <button class="storage-button">Go to Storage</button>
+            </div>
+        </section>
+        
+
+        <section class="camera-section">
+            <h2>Camera Access</h2>
+            <video id="camera-stream" autoplay></video>
+            <button id="capture-button" class="capture-button">Capture Frame</button>
+        </section>
+
+        <section class="subscription-section">
+            <h2>Subscribe to our Newsletter</h2>
+            <form id="subscription-form" class="subscription-form">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </form>
+            <p id="subscription-status"></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SAFR. All rights reserved.</p>
+    </footer>
+
+    <script src="web1_js.js"></script>
+    <script>
+        // This script only runs on features.html to request location access
+        document.addEventListener("DOMContentLoaded", function () {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        document.getElementById("location").textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+                        
+                        // Initialize map with coordinates
+                        const map = L.map('map').setView([latitude, longitude], 13);
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                            attribution: '© OpenStreetMap'
+                        }).addTo(map);
+                        
+                        // Add a marker at the current location
+                        L.marker([latitude, longitude]).addTo(map)
+                            .bindPopup("You are here!")
+                            .openPopup();
+                    },
+                    (error) => {
+                        document.getElementById("location").textContent = "Unable to retrieve location.";
+                    }
+                );
+            } else {
+                document.getElementById("location").textContent = "Geolocation is not supported by this browser.";
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>
