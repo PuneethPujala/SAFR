@@ -3,128 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Women's Safety Emergency</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Emergency Button with Siren</title>
     <style>
-        /* Global Reset */
+        /* Container for centering the button */
         body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(45deg, #ff6347, #ff1e1e); /* Vibrant background */
-            color: white;
-            overflow: hidden;
+            margin: 0;
+            background-color: #121212; /* Dark background for contrast */
+            font-family: Arial, sans-serif;
         }
 
-        /* Container for all elements */
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
-            padding: 30px 50px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            width: 90%;
-            max-width: 400px;
-        }
-
-        /* Heading Styles */
-        h1 {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        /* Safety Icon (FontAwesome Shield for protection) */
-        .safety-icon {
-            font-size: 80px;
-            margin-bottom: 20px;
-            color: #ffcc00;
-        }
-
-        /* Emergency Button */
+        /* Emergency Button Style */
         .emergency-button {
-            background: linear-gradient(145deg, #ff4b4b, #ff1e1e);
             padding: 20px 60px;
             font-size: 24px;
             font-weight: bold;
-            color: white;
-            border: none;
+            color: #fff;
+            background: linear-gradient(145deg, #ff1e1e, #d80000);
+            border: 4px solid transparent;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
-        /* Hover effect for the button */
+        /* Hover Effect */
         .emergency-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6);
+            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
-        /* Active effect when the button is pressed */
+        /* Active Effect */
         .emergency-button:active {
             transform: scale(0.98);
-            box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.8);
+            box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.8);
+            background: linear-gradient(145deg, #d80000, #b00000);
         }
-
-        /* Feedback Text */
-        #audioStatus {
-            font-size: 18px;
-            margin-top: 20px;
-            color: #ffcc00;
-            font-weight: bold;
-        }
-
-        /* Animated Pulse for Button */
-        .emergency-button {
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Safety Shield Icon (Protection) -->
-        <div class="safety-icon">
-            <i class="fas fa-shield-alt"></i>
-        </div>
+    <!-- Emergency Button -->
+    <button class="emergency-button" onclick="triggerEmergency()">
+        Emergency Alert
+    </button>
 
-        <!-- Heading Text -->
-        <h1>Women's Safety Emergency</h1>
-
-        <!-- Emergency Button -->
-        <button class="emergency-button" onclick="triggerEmergency()">
-            Activate Emergency Alert
-        </button>
-
-        <!-- Audio for Siren -->
-        <audio id="sirenAudio" src="siren.mp3" preload="auto"></audio>
-
-        <!-- Audio Status Feedback -->
-        <div id="audioStatus"></div>
-    </div>
+    <!-- Audio for Siren (Buzzer sound) -->
+    <audio id="sirenAudio" src="siren.mp3" preload="auto"></audio>
 
     <script>
-        // Function to trigger emergency actions
+        // Function to trigger emergency
         function triggerEmergency() {
             const sirenAudio = document.getElementById("sirenAudio");
-            const audioStatus = document.getElementById("audioStatus");
-
+            
             // Play the siren sound
             sirenAudio.play().then(() => {
                 console.log("Siren audio is playing.");
-                audioStatus.textContent = "Siren Activated! Stay Safe!";
             }).catch(error => {
                 console.warn("Audio playback failed:", error);
                 alert("Please enable audio permissions for this page on your mobile browser.");
@@ -134,7 +75,6 @@
             setTimeout(() => {
                 sirenAudio.pause();
                 sirenAudio.currentTime = 0;
-                audioStatus.textContent = "Siren Deactivated.";
                 console.log("Siren audio stopped.");
             }, 30000); // 30 seconds
         }
